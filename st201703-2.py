@@ -5,7 +5,7 @@ def takeSecond(elem):
     return elem[1]
 def takeThird(elem):
     return elem[2]
-def st170901():
+def st170302():
     n=int(input())
     m = int(input())
     # n,m=8,3
@@ -30,4 +30,4 @@ def st170901():
         print(key,end=' ')
 
 if __name__ == '__main__':
-    st170901()
+    st170302()
