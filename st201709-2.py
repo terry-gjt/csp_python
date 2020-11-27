@@ -5,7 +5,7 @@ def takeSecond(elem):
     return elem[1]
 def takeThird(elem):
     return elem[2]
-def st170901():
+def st170902():
     n,k = list(map(int, input().split()))
     # n,k=5,7
     # s=['1 1 14',
@@ -39,4 +39,4 @@ def st170901():
         print(key,end=' ')
 
 if __name__ == '__main__':
-    st170901()
+    st170902()
