@@ -1,10 +1,11 @@
 # 火车购票
 def st160902():
     n = int(input())
-    # s='2 5 4 2'
+    # s='3 5 4 4 4 3'
+    # seatgroup = [5] * 5  # 第i+1排剩余座位数
     # numbers = list(map(int, s.split()))
     numbers = list(map(int, input().split()))
-    seatgroup=[5]*20
+    seatgroup=[5]*20#第i+1排剩余座位数
     for num in numbers:
         havesell=False
         for i in range(len(seatgroup)):#先尽量相邻,第i+1排
@@ -23,15 +24,13 @@ def st160902():
                     for j in range(1, num + 1):
                         print(i * 5 + 5 - seatgroup[i] + j,end=' ')
                     seatgroup[i] -= num
+                    num=0
                 else:
-                    for j in range(1, i * 5 + 6):#第i+1排最大值i*5+5
+                    for j in range(1, seatgroup[i]+1):#第i+1排最大值i*5+5
                         print(i * 5 + 5 - seatgroup[i] + j,end=' ')
-                    seatgroup[i]=0
                     num -= seatgroup[i]
+                    seatgroup[i]=0
                     i+=1
         print()
-
-
-
 if __name__ == '__main__':
     st160902()
