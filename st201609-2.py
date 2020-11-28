@@ -21,12 +21,12 @@ def st160902():
             i=0
             while num!=0:
                 if seatgroup[i] >= num:#这排就能坐下
-                    for j in range(1, num + 1):
+                    for j in range(1, num + 1):#分配num个位置
                         print(i * 5 + 5 - seatgroup[i] + j,end=' ')
                     seatgroup[i] -= num
                     num=0
                 else:
-                    for j in range(1, seatgroup[i]+1):#第i+1排最大值i*5+5
+                    for j in range(1, seatgroup[i]+1):#分配第i+1排所有剩余位置
                         print(i * 5 + 5 - seatgroup[i] + j,end=' ')
                     num -= seatgroup[i]
                     seatgroup[i]=0
