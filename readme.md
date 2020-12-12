@@ -8,3 +8,7 @@
 有问题可以联系我邮箱3211616604@qq.com
 
 或者直接留言，我会尽量去实现的
+
+码云：https://gitee.com/terry-gjt/csp_python
+
+github：https://github.com/terry-gjt/csp_python

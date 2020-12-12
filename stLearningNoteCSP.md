@@ -30,7 +30,7 @@ random.sort(key=takeSecond)
 dict = {'Alice': '2341', 'Beth': '9102', 'Cecil': '3258'}
 dict.clear()    #删除字典内所有元素
 dict.copy()     #返回一个字典的浅复制
-dict.get(key, default=None)     #返回指定键的值，如果值不在字典中返回default值
+dict.get(key, defaultvalue)     #返回指定键的值，如果值不在字典中返回default值
 dict.has_key(key)       #如果键在字典dict里返回true，否则返回false
 dict.items()            #以列表返回可遍历的(键, 值) 元组数组
 dict.keys()             #以列表返回一个字典所有的键
