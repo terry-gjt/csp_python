@@ -12,7 +12,7 @@
 # 15
 # 评测用例规模与约定
 # 　　1<=n<=100，0<=横坐标、纵坐标<=100。
-def st1():
+def st140902():
     n = int(input())
     d={}
     windows = []
@@ -24,4 +24,4 @@ def st1():
                 d[x*100+y]=True
     print(len(d))
 if __name__ == '__main__':
-    st1()
+    st140902()
