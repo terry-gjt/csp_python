@@ -1,16 +1,15 @@
 #dijkstra原算法参考自https://blog.csdn.net/weixin_39433783/article/details/82954269
-#  we define the length of a path to be the sum of the lengths of its edges.
+# 题目 最小瓶颈路径（路径的最大边相比其他路径最小）
+# we define the length of a path to be the sum of the lengths of its edges.
 # Define the bottleneck of a path to be the maximum length of one of its edges.
 # A mininum-bottleneck path between two vertices s and t is a path with bottleneck no larger than that of any other s-t path.
 # Show how to modify Dijkstra's algorithm tocompute a minimum-bottleneck path between two given vertices.
-# The running timeshould be O(mlogn), as in lecture.
-# 最小瓶颈路径（路径的最大边相比其他路径最小）
+# The running timeshould be O(mlogn).
 # 我们把一条路的长度定义为它的长度之和边缘。定义一条路径的瓶颈是它的一条边的最大长度。
 # 顶点s和t之间的最小瓶颈路径是一条瓶颈不大于任何其它s-t路径的路径。演示如何修改Dijkstra的算法来计算两个给定顶点之间的最小瓶颈路径。
 # 运行时间应该是O（mlogn）。
 
 #其实最小瓶颈树就是最小生成树
-from queue import PriorityQueue
 graph = {}
 graph["start"] = {}
 graph["start"]["a"] = 10
@@ -124,17 +123,3 @@ def bottleneck():
 # 测试
 if __name__ == '__main__':
     bottleneck()
-# def Prim(graph):
-#     vnum = graph.vertex_num()
-#     edges = PriorityQueue()            #每次将新边加入到一个优先队列中
-#     mst = [None] * vnum              #用于判断边所连接的点是否已经遍历过
-#     edge_count = 0
-#     while edge_count < vnum and edges.qsize():
-#         weight, vi, vj = edges.get()
-#         if mst[vj] == None:
-#             edge_count += 1
-#             mst[vj] = (vi, weight)
-#             for i,w in graph.out_edges(vj):   #将新点的出边加入优先队列
-#                 if not mst[i]:
-#                     edges.put((w, vj, i))
-#     return mst
