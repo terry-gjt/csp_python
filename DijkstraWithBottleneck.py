@@ -3,42 +3,66 @@
 # A mininum-bottleneck path between two vertices s and t is a path with bottleneck no larger than that of any other s-t path.
 # Show how to modify Dijkstra's algorithm tocompute a minimum-bottleneck path between two given vertices.
 # The running timeshould be O(mlogn), as in lecture.
-
+# 最小瓶颈路径（路径的最大边相比其他路径最小）
 # 我们把一条路的长度定义为它的长度之和边缘。定义一条路径的瓶颈是它的一条边的最大长度。
 # 顶点s和t之间的最小瓶颈路径是一条瓶颈不大于任何其它s-t路径的路径。演示如何修改Dijkstra的算法来计算两个给定顶点之间的最小瓶颈路径。
 # 运行时间应该是O（mlogn）。
 
-#
+#dijkstra原算法参考自https://blog.csdn.net/weixin_39433783/article/details/82954269
 graph = {}
 graph["start"] = {}
-graph["start"]["a"] = 6
-graph["start"]["b"] = 2
+graph["start"]["a"] = 10
+graph["start"]["b"] = 6
+graph["start"]["end"] = 17
 
 graph["a"] = {}
-graph["a"]["end"] = 1
+graph["a"]["end"] = 9
+graph["a"]["c"] = 9
+graph["a"]["start"] = 10
 
 graph["b"] = {}
-graph["b"]["a"] = 3
-graph["b"]["end"] = 5
+graph["b"]["c"] = 5
+graph["b"]["6"] = 9
+
+graph["c"] = {}
+graph["c"]["d"] = 4
+graph["c"]["f"] = 7
+graph["c"]["a"] = 9
+graph["c"]["b"] = 5
+
+graph["d"] = {}
+graph["d"]["e"] = 6
+graph["d"]["c"] = 4
+
+graph["e"] = {}
+graph["e"]["d"] = 6
+
+graph["f"] = {}
+graph["f"]["g"] = 8
+graph["f"]["c"] = 7
+
+graph["g"] = {}
+graph["g"]["end"] = 4
+graph["g"]["f"] = 8
+
 graph["end"] = {}
+graph["end"]["g"] = 4
+graph["end"]["a"] = 9
+graph["end"]["start"] = 17
 
 # 无穷大
 infinity = float("inf")
 costs = {}
-costs["a"] = 6
-costs["b"] = 2
-costs["end"] = infinity
 
 # 父节点散列表
 parents = {}
-parents["a"] = "start"
-parents["b"] = "start"
-parents["end"] = None
 
 # 已经处理过的节点，需要记录
 processed = []
 
-
+def addcosts(node):
+    for cost in graph[node]:
+        costs[cost]=graph[node][cost]
 # 找到开销最小的节点
 def find_lowest_cost_node(costs):
     # 初始化数据
