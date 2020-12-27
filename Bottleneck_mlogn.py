@@ -117,7 +117,7 @@ def bottleneck():
                 costs2[neighborstr] = new_cost
                 costs.put(costnode(new_cost,neighborstr))
                 #同时将该邻居的父节点设置为当前节点
-                parents[n] = nodestr
+                parents[neighborstr] = nodestr
         # 将当前节点标记为处理过
         processed.append(nodestr)
         # 找出接下来要处理的节点，并循环
