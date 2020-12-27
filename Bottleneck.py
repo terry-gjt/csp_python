@@ -10,6 +10,8 @@
 # 运行时间应该是O（mlogn）。
 
 #其实最小瓶颈树就是最小生成树
+# 使用字典构建图，相当于邻接表,
+# graph["start"]["processed"]用于保存当前节点是否已经在树中
 graph = {}
 graph["start"] = {}
 graph["start"]["a"] = 10
@@ -62,20 +64,16 @@ parents = {}
 # 已经处理过的节点，需要记录
 processed = []
 
-def addcosts(node):
-    for cost in graph[node]:
-        costs[cost]=graph[node][cost]
-        # parents[cost]=node
 
-# 找到最短路径
-def find_shortest_path():
+# 根据记录的父节点反推出路径
+def getBottleneckPath():
     node = "end"
-    shortest_path = ["end"]
+    bottleneckpath = ["end"]
     while parents[node] != "start":
-        shortest_path.append(parents[node])
+        bottleneckpath.append(parents[node])
         node = parents[node]
-    shortest_path.append("start")
-    return shortest_path
+    bottleneckpath.append("start")
+    return bottleneckpath
 
 def find_lowest_cost_node(costs):
     # 初始化数据
@@ -91,18 +89,14 @@ def find_lowest_cost_node(costs):
                 lowest_cost_node = node
     return lowest_cost_node
 
-# 寻找最短路径加入树中（其实就是最小生成树算法）
+# 寻找最近节点加入树中（其实就是最小生成树算法）
 def bottleneck():
-    # 查询到目前开销最小的节点
+    # 从start节点开始计算
     node = 'start'
-    graphlen=len(graph)
     # 只要有开销最小的节点就循环（这个while循环在所有节点都被处理过后结束）
     while node is not None:
         # 获取该节点相邻的节点
-        # print(node)
         neighbors = graph[node]
-        # print(neighbors)
-        # print(parents)
         # 遍历当前节点的所有邻居
         for n in neighbors.keys():
             new_cost = neighbors[n]
@@ -112,14 +106,12 @@ def bottleneck():
                 #同时将该邻居的父节点设置为当前节点
                 parents[n] = node
         # 将当前节点标记为处理过
-        addcosts(node)
         processed.append(node)
         # 找出接下来要处理的节点，并循环
         node = find_lowest_cost_node(costs)
     # 循环完毕说明所有节点都已经处理完毕
-    shortest_path = find_shortest_path()
-    shortest_path.reverse()
-    print(shortest_path)
-# 测试
+    bottleneckpath = getBottleneckPath()
+    bottleneckpath.reverse()
+    print(bottleneckpath)
 if __name__ == '__main__':
     bottleneck()
