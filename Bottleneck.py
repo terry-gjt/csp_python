@@ -11,7 +11,6 @@
 
 #其实最小瓶颈树就是最小生成树
 # 使用字典构建图，相当于邻接表,
-# graph["start"]["processed"]用于保存当前节点是否已经在树中
 graph = {}
 graph["start"] = {}
 graph["start"]["a"] = 10
