@@ -15,7 +15,7 @@ def st2009_2():
           '90 31 94 35 98 39 102 43 106 47 110 51',
           '0 20 4 20 8 20 12 20 16 20 20 20']
     n,k,t,x1,y1,x2,y2=list(map(int,input().split()))
-    jinduo=0
+    jinguo=0
     douliu=0
     for i in range(n):
         # weizhi = list(map(int, s2[i].split()))
@@ -30,9 +30,9 @@ def st2009_2():
                     douliu += 1
                     break
             else:thismentimes=0
-        if temp:jinduo+=1
+        if temp:jinguo+=1
 
-    print(jinduo)
+    print(jinguo)
     print(douliu)
 
 if __name__ == '__main__':
